@@ -1,0 +1,30 @@
+// $primary: #E96938;
+// $secondary: #1B4448;
+// $secondary_variant: #5E7070;
+// $background: #FDEBCD;
+// $surface: #5E7070;
+// $error: #FF2171;
+// $on_primary: #FDEBCD;
+// $on_secondary: #FDEBCD ;
+// $on_background: #1B4448 ;
+// $on_surface: #FDEBCD ;
+// $on_error: #FFFFFF;
+
+$white: #ffffff;
+
+$theme-colors: (
+    "light":      #fdebcd,
+    "dark":       #5e7070,
+    "primary":    #e96938,
+    "secondary":  #1b4448,
+    "info":       #6a8dc0,
+    "accent1":    #aace56,
+    "accent2":    #559840,
+    "accent3":    #a9c29d,
+    "success":    #67b426,
+    "warning":    #fec57b,
+    "danger":     #f71368,
+);
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
