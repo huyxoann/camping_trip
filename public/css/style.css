@@ -2,9 +2,10 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-*{
+* {
     box-sizing: border-box;
 }
+
 html,
 body,
 div,
@@ -360,16 +361,18 @@ body {
     margin-top: 64px;
 }
 
-.thu_vien_anh {
+.title_cus {
     color: #1B4448;
     font-size: 45px;
     font-family: OutfitBold;
     font-weight: 700;
     text-transform: uppercase;
     word-wrap: break-word;
+    margin-top: 64px;
+
 }
 
-.subtext_tva {
+.subtext_cus {
     text-align: start;
     margin-top: 15px;
     color: #1B4448;
@@ -380,23 +383,158 @@ body {
     margin-bottom: 20px;
 }
 
-.thu_vien_video{
-    margin-top: 64px;
-}
 
-#carouselVideo{
+#carouselVideo {
     object-fit: cover;
     margin: 0 auto;
     max-width: 720px;
     max-height: 480px;
-    
+
 }
 
-.carousel-item video{
+.carousel-item video {
     width: 720px;
 }
-.carousel-item image{
+
+.carousel-item image {
     width: 720px;
     object-fit: cover;
 }
 
+#carouselFeedback {
+    margin: 0 auto;
+    width: max-content;
+}
+
+.person_icon {
+    margin: 0 auto;
+    width: max-content;
+
+}
+
+.person_icon img {
+    border-radius: 9999px;
+    border: 1.50px #E96938 solid;
+
+}
+
+.feedback_post {
+    background-color: #5E7070;
+    height: auto;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    border-radius: 20px;
+    margin: 6px;
+}
+
+.feedback_post:last-child {
+    margin-right: 0px;
+}
+
+.content {
+    color: #FDEBCD;
+    margin-top: 8px;
+    font-size: 16px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.fullname {
+    margin-top: 8px;
+    color: #FDEBCD;
+    font-size: 32px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word;
+    text-align: center;
+}
+
+.stars {
+    gap: 25px;
+}
+
+.stars i {
+    color: #e6e6e6;
+    font-size: 23px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.stars i.active {
+    color: #E96938;
+}
+
+.feedback_content {
+    margin: 0 auto;
+}
+
+.form_element {
+    margin-top: 20px;
+    background: #1B4448;
+    border-radius: 20px;
+    padding: 16px;
+}
+
+.feedback_title {
+    color: #FDEBCD;
+    font-size: 32px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word;
+    text-align: center;
+}
+.social_media_icons{
+    margin-bottom: 16px;
+}
+.other_contact{
+    margin-bottom: 16px;
+}
+
+.social_media_icons a {
+    width: max-content;
+}
+
+.social_media_icons img {
+    width: 100%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+}
+
+.zaloQR {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+}
+
+.zaloQR img {
+    border-radius: 20px;
+    width: 40%;
+}
+
+footer {
+    margin-top: 64px;
+    background-color: #745a5a;
+    padding: 16px;
+}
+
+.footer_title {
+    color: #FDEBCD;
+    padding-left: 10px;
+    font-size: 29px;
+    font-family: Outfit;
+    font-weight: 600;
+    text-transform: uppercase;
+    word-wrap: break-word
+}
+
+.footer_info {
+    padding-left: 10px;
+    color: #FDEBCD;
+    font-size: 24px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word
+}
