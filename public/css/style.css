@@ -485,10 +485,12 @@ body {
     word-wrap: break-word;
     text-align: center;
 }
-.social_media_icons{
+
+.social_media_icons {
     margin-bottom: 16px;
 }
-.other_contact{
+
+.other_contact {
     margin-bottom: 16px;
 }
 
@@ -534,6 +536,72 @@ footer {
     padding-left: 10px;
     color: #FDEBCD;
     font-size: 24px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word
+}
+
+#bookingModal {
+    background-color: #1B4448;
+
+}
+
+#bookingModal .modal-content {
+    background-color: #FDEBCD;
+    border-color: #E96938;
+    border-width: 3px;
+}
+
+#bookingModal .modal-content #bookingModalLabel {
+    color: #1B4448;
+    font-size: 45px;
+    font-family: OutfitBold;
+    font-weight: 700;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    border-color: #E96938;
+    border-width: 3px;
+}
+
+.modal-body {
+    background-color: #FDEBCD;
+}
+
+.modal-body input, textarea{
+    color: #1B4448;
+    font-size: 24px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word
+}
+
+.bookingForm {
+    background-color: #FDEBCD;
+    border-color: #E96938;
+    border-width: 3px;
+}
+
+.bookingForm label, .detail_text{
+    color: #1B4448;
+    font-size: 24px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word
+}
+.modal-footer button{
+    color: #FDEBCD;
+    font-size: 24px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word
+}
+.modal-footer button:first-child{
+    background-color: #5E7070;
+}
+
+.form-message{
+    color: #E96938;
+    font-size: 20px;
     font-family: FiraSansMedium;
     font-weight: 500;
     word-wrap: break-word

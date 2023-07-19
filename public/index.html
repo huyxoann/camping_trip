@@ -24,7 +24,7 @@
                 </div>
             </a>
             <div class="col-2 pt-4 pb-4">
-                <button class="booking_btn btn btn-primary ">
+                <button class="booking_btn btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookingModal">
                     Booking now
                 </button>
             </div>
@@ -235,7 +235,7 @@
                             Đánh giá
                         </div>
                         <div class="col-3">
-                            <div class="stars d-flex align-content-center justify-content-center pt-2">
+                            <div class="stars d-flex align-content-center justify-content-center pt-2 flex-wrap">
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
                                 <i class="fa-solid fa-star"></i>
@@ -300,7 +300,108 @@
             </div>
         </div>
     </footer>
+    <!-- Modal -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-labelledby="bookingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="bookingModalLabel">Form booking</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="bookingForm" class="form-control bookingForm p-3">
+                    <div class="modal-body">
+                        <div class="row mb-3">
+                            <div class="col-3 form-label">
+                                <label for="nameInput">
+                                    Họ và tên*
+                                </label>
+                            </div>
+                            <div class="col-9">
+                                <input id="nameInput" type="text" class="form-control" placeholder="">
+                                <div class="form-message"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-3 form-label">
+                                <label for="phoneNumberInput" class="form-label">
+                                    Số điện thoại*
+                                </label>
+                            </div>
+                            <div class="col-9">
+                                <input id="phoneNumberInput" type="text" class="form-control">
+                                <div class="form-message"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <label for="datePicker" class="form-label">
+                                    Ngày cắm trại*
+                                </label>
+                                <input id="datePicker" type="date" class="form-control">
+                                <div class="form-message"></div>
+                            </div>
+                            <div class="col-4">
+                                <label for="adultAmounts" class="form-label">
+                                    Số người lớn*
+                                </label>
+                                <input id="adultAmounts" type="number" class="form-control">
+                                <div class="form-message"></div>
+                            </div>
+                            <div class="col-4">
+                                <label for="childAmounts" class="form-label">
+                                    Số trẻ em (nếu có)
+                                </label>
+                                <input id="childAmounts" type="number" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label for="note" class="form-label">
+                                Ghi chú (nếu có)
+                            </label>
+                            <textarea class="form-control" name="" id="note" cols="30" rows="5"></textarea>
+                        </div>
+                        <div class="row detail_text mb-3">
+                            <div class="col-3">Giá dự kiến: </div>
+                            <div class="col-9">...</div>
+                        </div>
+                        <div class="row notice">
+                            Lưu ý:
+                            <ul>
+                                <li>Vui lòng cung cấp đầy đủ thông tin để chúng mình có thể tiện trong việc liên hệ ạ!
+                                </li>
+                                <li>Giá dự kiến mang tính chất tham khảo, giá chính thức sẽ được xác nhận sau khi được
+                                    liên hệ. Giá tiền có thể tăng vì chi phí phát sinh.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                        <button id="submitBtn" type="submit" class="btn btn-primary">Đăng kí</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="dist/main.js"></script>
+    <script src="dist/form_validate.js"></script>
+    <script>
+        Validator({
+            form: '.bookingForm',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isRequiredWithMessage('#nameInput', 'Vui lòng nhập đầy đủ tên'),
+                Validator.isRequiredWithMessage('#phoneNumberInput', 'Vui lòng nhập số điện thoại'),
+                Validator.isRequired('#datePicker'),
+                Validator.isValidatedDate('#datePicker'),
+                Validator.isRequiredWithMessage('#adultAmounts', 'Vui lòng nhập trường này'),
+                Validator.isPositive('#adultAmounts'),
+            ],
+            onSubmit: function (data) {
+                console.log(data)
+            }
+        })
+    </script>
 </body>
 
 
