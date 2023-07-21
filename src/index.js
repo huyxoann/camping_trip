@@ -1,5 +1,5 @@
 import $ from "jquery";
-import { Carousel } from "bootstrap";
+import "bootstrap";
 
 // Select all elements with the "i" tag and store them in a NodeList called "stars"
 const stars = document.querySelectorAll(".stars i");
@@ -75,8 +75,8 @@ var note = document.getElementById('note');
 
 
 function createBookingOrder() {
-
-  let bookingOrder = {
+  var bookingOrder = {}
+  return bookingOrder = {
     fullname: fullname.value,
     phoneNumber: phoneNumber.value,
     campingDate: campingDate.value,
@@ -84,25 +84,179 @@ function createBookingOrder() {
     childAmounts: childAmounts.value,
     note: note.value
   };
-  const dateString = bookingOrder.campingDate;
-  const timestamp = Date.parse(dateString);
-  console.log(timestamp);
-  console.log(bookingOrder);
+}
+function showConfirmInfo(bookingOrder){
+  document.querySelector('.fullnameText').innerHTML = bookingOrder.fullname
+  document.querySelector('.phoneNumberText').innerHTML = bookingOrder.phoneNumber
+  document.querySelector('.campingDateText').innerHTML = bookingOrder.campingDate
+  document.querySelector('.adultsText').innerHTML = bookingOrder.adultAmounts
+  document.querySelector('.childText').innerHTML = bookingOrder.childAmounts ?bookingOrder.childAmounts : "0"
+  document.querySelector('.noteText').innerHTML = bookingOrder.note ? bookingOrder.note : "Không có"
+
 }
 
+// usersForm.addEventListener('submit', (e) => {
+//   e.preventDefault()
+//   try{
+//       const addUsers = addDoc(usersCol, {
+//         fullname: fullname,
+//       });
+//       console.log("Doc's id: ", addUsers.id)
+//   }catch(e){
+//       console.err("Error: ", e)
+//   }
+//   createBookingOrder()
 
-usersForm.addEventListener('submit', (e) => {
-  e.preventDefault()
-  // try{
-  //     const addUsers = addDoc(usersCol, {
-  //       fullname: fullname,
-  //     });
-  //     console.log("Doc's id: ", addUsers.id)
-  // }catch(e){
-  //     console.err("Error: ", e)
-  // }
-  createBookingOrder()
+// })
 
+// Validate form
+function Validator(options) {
+
+  var formElement = document.querySelector(options.form)
+
+  var selectorRules = {}
+
+  function validate(inputElement, rule) {
+    var errorElement = inputElement.parentElement.querySelector(options.errorSelector)
+    var errorMessage
+    var rules = selectorRules[rule.selector]
+
+    for (var i = 0; i < rules.length; i++) {
+      errorMessage = rules[i](inputElement.value)
+      if (errorMessage) break
+    }
+
+    if (errorMessage) {
+      showError(errorElement, errorMessage)
+    } else {
+      showNotError(errorElement)
+    }
+
+    return !errorMessage
+  }
+
+  function showError(errorElement, errorMessage) {
+    errorElement.innerText = errorMessage
+  }
+  function showNotError(errorElement) {
+    errorElement.innerText = ''
+  }
+
+
+  if (formElement) {
+
+    formElement.onsubmit = function (e) {
+      e.preventDefault()
+
+      var isFormValid = true
+
+      options.rules.forEach(function (rule) {
+        var inputElement = formElement.querySelector(rule.selector)
+        var isValid = validate(inputElement, rule)
+
+        if (!isValid) {
+          isFormValid = false
+        }
+      })
+
+      if (isFormValid) {
+        if (typeof options.onSubmit === 'function') {
+          formElement.onsubmit = options.onSubmit
+        }
+      } else {
+      }
+    }
+
+
+    options.rules.forEach(function (rule) {
+      var inputElement = formElement.querySelector(rule.selector)
+      var errorElement = inputElement.parentElement.querySelector('.form-message')
+
+      // Lưu rules cho mỗi input
+      if (Array.isArray(selectorRules[rule.selector])) {
+        selectorRules[rule.selector].push(rule.test)
+      } else {
+        selectorRules[rule.selector] = [rule.test]
+      }
+
+      if (inputElement) {
+        inputElement.onblur = function () {
+          validate(inputElement, rule)
+        }
+
+        inputElement.oninput = function () {
+          showNotError(errorElement)
+        }
+      }
+    })
+
+  }
+
+}
+
+Validator.isRequired = function (selector) {
+  return {
+    selector: selector,
+    test: function (value) {
+      return value.trim() ? undefined : 'Vui lòng nhập trường này'
+    }
+  }
+}
+
+Validator.isRequiredWithMessage = function (selector, message) {
+  return {
+    selector: selector,
+    test: function (value) {
+      return value.trim() ? undefined : message
+    }
+  }
+}
+
+Validator.isPositive = function (selector) {
+  return {
+    selector: selector,
+    test: function (value) {
+      value = Number(value)
+      return value > 0 ? undefined : 'Số người phải là số dương'
+    }
+  }
+}
+
+Validator.isValidatedDate = function (selector) {
+  return {
+    selector: selector,
+    test: function (value) {
+      return Date.parse(value) > Date.now() ? undefined : 'Vui lòng nhập ngày hợp lệ'
+    }
+  }
+}
+// Validator của form Booking
+Validator({
+  form: '.bookingForm',
+  errorSelector: '.form-message',
+  rules: [
+    Validator.isRequiredWithMessage('#nameInput', 'Vui lòng nhập đầy đủ tên'),
+    Validator.isRequiredWithMessage('#phoneNumberInput', 'Vui lòng nhập số điện thoại'),
+    Validator.isRequired('#datePicker'),
+    Validator.isValidatedDate('#datePicker'),
+    Validator.isRequiredWithMessage('#adultAmounts', 'Vui lòng nhập trường này'),
+    Validator.isPositive('#adultAmounts'),
+  ],
+  onSubmit: function (e) {
+    e.preventDefault()
+    createBookingOrder()
+    const submitBtnE = document.querySelector('#submitBtn')
+    submitBtnE.setAttribute('data-bs-toggle', 'modal')
+    submitBtnE.setAttribute('data-bs-target', '#confirmModal')
+    submitBtnE.click()
+    showConfirmInfo(createBookingOrder())
+  }
 })
+
+
+
+
+
+
 
 

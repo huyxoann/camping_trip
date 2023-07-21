@@ -541,18 +541,21 @@ footer {
     word-wrap: break-word
 }
 
-#bookingModal {
+#bookingModal,
+#confirmModal {
     background-color: #1B4448;
 
 }
 
-#bookingModal .modal-content {
+#bookingModal .modal-content,
+#confirmModal .modal-content {
     background-color: #FDEBCD;
     border-color: #E96938;
     border-width: 3px;
 }
 
-#bookingModal .modal-content #bookingModalLabel {
+#bookingModal .modal-content #bookingModalLabel,
+#confirmModal .modal-content #bookingModalLabel {
     color: #1B4448;
     font-size: 45px;
     font-family: OutfitBold;
@@ -567,7 +570,8 @@ footer {
     background-color: #FDEBCD;
 }
 
-.modal-body input, textarea{
+.modal-body input,
+textarea {
     color: #1B4448;
     font-size: 24px;
     font-family: FiraSansMedium;
@@ -581,27 +585,79 @@ footer {
     border-width: 3px;
 }
 
-.bookingForm label, .detail_text{
+.bookingForm label,
+.detail_text {
     color: #1B4448;
     font-size: 24px;
     font-family: FiraSansMedium;
     font-weight: 500;
     word-wrap: break-word
 }
-.modal-footer button{
+
+.modal-footer button {
     color: #FDEBCD;
     font-size: 24px;
     font-family: FiraSansMedium;
     font-weight: 500;
     word-wrap: break-word
 }
-.modal-footer button:first-child{
+
+.modal-footer button:first-child {
     background-color: #5E7070;
 }
 
-.form-message{
+.form-message {
     color: #E96938;
     font-size: 20px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word
+}
+
+.notice {
+    padding-left: 20px;
+    color: #1B4448;
+    font-size: 20px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word
+}
+
+.notice ul {
+    list-style-type: circle;
+}
+
+.lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-dual-ring:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #dfc;
+    border-color: #dfc transparent #dfc transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#confirmForm .modal-body {
+    color: #1B4448;
+    font-size: 24px;
     font-family: FiraSansMedium;
     font-weight: 500;
     word-wrap: break-word

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="scss/custom.css">
     <link rel="stylesheet" href="css/style.css">
 
-    <!-- <script src="./dist/main.js"></script> -->
 </head>
 
 <body>
@@ -362,7 +361,7 @@
                         </div>
                         <div class="row detail_text mb-3">
                             <div class="col-3">Giá dự kiến: </div>
-                            <div class="col-9">...</div>
+                            <div id="price" class="col-9">...</div>
                         </div>
                         <div class="row notice">
                             Lưu ý:
@@ -371,6 +370,7 @@
                                 </li>
                                 <li>Giá dự kiến mang tính chất tham khảo, giá chính thức sẽ được xác nhận sau khi được
                                     liên hệ. Giá tiền có thể tăng vì chi phí phát sinh.</li>
+                                <li>Bảng giá quý khách có thể tham khảo tại <a href="">Đây</a></li>
                             </ul>
                         </div>
                     </div>
@@ -383,25 +383,56 @@
         </div>
     </div>
 
+    <!-- Modal xác nhận -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="bookingModalLabel">Xác nhận Booking</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="confirmForm" class="form-control bookingForm p-3">
+                    <div class="modal-body">
+                        <div class="row text-center">
+                            Xác nhận nội dung booking?
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Họ và tên: </div>
+                            <div class="col-9 fullnameText"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Số điện thoại: </div>
+                            <div class="col-9 phoneNumberText"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Ngày cắm trại: </div>
+                            <div class="col-9 campingDateText"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Số người lớn: </div>
+                            <div class="col-3 adultsText"></div>
+                            <div class="col-3">Số trẻ em: </div>
+                            <div class="col-3 childText"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3">Ghi chú: </div>
+                            <div class="col-9 noteText"></div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#bookingModal">Quay lại</button>
+                        <button id="xacNhanSubmitBtn" type="button" class="btn btn-primary">Xác nhận</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <script src="dist/main.js"></script>
-    <script src="dist/form_validate.js"></script>
-    <script>
-        Validator({
-            form: '.bookingForm',
-            errorSelector: '.form-message',
-            rules: [
-                Validator.isRequiredWithMessage('#nameInput', 'Vui lòng nhập đầy đủ tên'),
-                Validator.isRequiredWithMessage('#phoneNumberInput', 'Vui lòng nhập số điện thoại'),
-                Validator.isRequired('#datePicker'),
-                Validator.isValidatedDate('#datePicker'),
-                Validator.isRequiredWithMessage('#adultAmounts', 'Vui lòng nhập trường này'),
-                Validator.isPositive('#adultAmounts'),
-            ],
-            onSubmit: function (data) {
-                console.log(data)
-            }
-        })
-    </script>
+    <!-- <script src="dist/form_validate.js"></script> -->
+    <script src="dist/calculate.js"></script>
+
 </body>
 
 
