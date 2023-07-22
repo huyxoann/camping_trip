@@ -1,22 +1,7 @@
 import $ from "jquery";
+import Swal from "sweetalert2";
+
 import "bootstrap";
-
-// Select all elements with the "i" tag and store them in a NodeList called "stars"
-const stars = document.querySelectorAll(".stars i");
-// Loop through the "stars" NodeList
-stars.forEach((star, index1) => {
-  // Add an event listener that runs a function when the "click" event is triggered
-  star.addEventListener("click", () => {
-    // Loop through the "stars" NodeList Again
-    stars.forEach((star, index2) => {
-      // Add the "active" class to the clicked star and any stars with a lower index
-      // and remove the "active" class from any stars with a higher index
-      index1 >= index2 ? star.classList.add("active") : star.classList.remove("active");
-    });
-  });
-});
-
-
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 import { initializeApp } from 'firebase/app'
@@ -45,19 +30,19 @@ const db = getFirestore()
 
 // collection ref
 
-const usersCol = collection(db, 'users')
+const usersCol = collection(db, 'orders')
 
-// getDocs(usersCol)
-//     .then((snapshot) => {
-//         let users = []
-//         snapshot.docs.forEach((doc) => {
-//             users.push({ ...doc.data(), id: doc.id })
-//         })
-//         console.log(users)
-//     })
-//     .catch(err => {
-//         console.error(err.message)
-//     })
+getDocs(usersCol)
+  .then((snapshot) => {
+    let users = []
+    snapshot.docs.forEach((doc) => {
+      users.push({ ...doc.data(), id: doc.id })
+    })
+    console.log(users)
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
 
 // Form submit
 
@@ -85,29 +70,46 @@ function createBookingOrder() {
     note: note.value
   };
 }
-function showConfirmInfo(bookingOrder){
+function showConfirmInfo(bookingOrder) {
   document.querySelector('.fullnameText').innerHTML = bookingOrder.fullname
   document.querySelector('.phoneNumberText').innerHTML = bookingOrder.phoneNumber
   document.querySelector('.campingDateText').innerHTML = bookingOrder.campingDate
   document.querySelector('.adultsText').innerHTML = bookingOrder.adultAmounts
-  document.querySelector('.childText').innerHTML = bookingOrder.childAmounts ?bookingOrder.childAmounts : "0"
+  document.querySelector('.childText').innerHTML = bookingOrder.childAmounts ? bookingOrder.childAmounts : "0"
   document.querySelector('.noteText').innerHTML = bookingOrder.note ? bookingOrder.note : "Không có"
-
 }
 
-// usersForm.addEventListener('submit', (e) => {
-//   e.preventDefault()
-//   try{
-//       const addUsers = addDoc(usersCol, {
-//         fullname: fullname,
-//       });
-//       console.log("Doc's id: ", addUsers.id)
-//   }catch(e){
-//       console.err("Error: ", e)
-//   }
-//   createBookingOrder()
+var bookingModalE = document.querySelector('#bookingModal')
 
-// })
+var confirmFormE = document.querySelector('#confirmForm')
+confirmFormE.addEventListener('submit', function (e) {
+  e.preventDefault()
+  var xacNhanSubmitBtnE = document.querySelector('#xacNhanSubmitBtn')
+  var cancelConfirmBtnE = document.querySelector('#cancelConfirmBtn')
+  var loadingBtnE = document.querySelector('#loadingBtn')
+
+  cancelConfirmBtnE.classList.add('disabled')
+  xacNhanSubmitBtnE.parentNode.replaceChild(loadingBtnE, xacNhanSubmitBtnE);
+  loadingBtnE.classList.remove('d-none')
+  if (addOrder(createBookingOrder())) {
+    setTimeout(function () {
+      window.location.href = 'index.html';
+    }, 5000)
+    Swal.fire({
+      title: 'Đăng kí thành công!',
+      text: 'Chúng tôi sẽ liên hệ bạn sớm với bạn sớm thôi. Thời gian liên hệ có thể ngoài giờ hành chính.',
+      icon: 'success',
+      confirmButtonText: "Ok!!!"
+    })
+
+    //  $('confirmModal').modal('hide')
+  }
+})
+
+function addOrder(bookingOrder) {
+  var docRef = null
+  return docRef = addDoc(collection(db, "orders"), bookingOrder)
+}
 
 // Validate form
 function Validator(options) {
@@ -244,14 +246,56 @@ Validator({
   ],
   onSubmit: function (e) {
     e.preventDefault()
-    createBookingOrder()
     const submitBtnE = document.querySelector('#submitBtn')
     submitBtnE.setAttribute('data-bs-toggle', 'modal')
     submitBtnE.setAttribute('data-bs-target', '#confirmModal')
     submitBtnE.click()
-    showConfirmInfo(createBookingOrder())
+    var bookingOrder = createBookingOrder()
+    showConfirmInfo(bookingOrder)
   }
 })
+
+// Select all elements with the "i" tag and store them in a NodeList called "stars"
+const stars = document.querySelectorAll(".stars i");
+
+// ---- ---- Stars ---- ---- //
+stars.forEach((star, index1) => {
+  star.addEventListener('click', () => {
+    console.log("")
+    stars.forEach((star, index2) => {
+      // ---- ---- Active Star ---- ---- //
+      index1 >= index2
+        ? star.classList.add('active')
+        : star.classList.remove('active');
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Select all elements with the "i" tag and store them in a NodeList called "stars"
+  const stars = document.querySelectorAll(".stars i");
+
+  // ---- ---- Stars ---- ---- //
+  stars.forEach((star, index1) => {
+    star.addEventListener('click', () => {
+      console.log("")
+      stars.forEach((star, index2) => {
+        // ---- ---- Active Star ---- ---- //
+        index1 >= index2
+          ? star.classList.add('active')
+          : star.classList.remove('active');
+      });
+    });
+  });
+});
+
+var viewDVElement = document.querySelector('.view_dich_vu')
+viewDVElement.addEventListener('click', function () {
+  const liveToastE = document.getElementById('liveToast')
+  var toast = new bootstrap.Toast(liveToastE)
+  toast.show()
+})
+
 
 
 

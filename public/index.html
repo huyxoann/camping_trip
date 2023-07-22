@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Trang chủ | Camping Trip Đà Nẵng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <link rel="stylesheet" href="scss/custom.css">
     <link rel="stylesheet" href="css/style.css">
@@ -14,10 +14,10 @@
 <body>
     <nav class="container-fluid  bg-secondary ">
         <div class="container d-flex flex-row nav  align-items-center">
-            <a class="col-4 corp_name d-block pt-4 pb-4" href="#">
+            <a href="index.html" class="col-4 corp_name d-block pt-4 pb-4">
                 Camping Trip Đà Nẵng
             </a>
-            <a class="col-6 d-block">
+            <a id="" href="services.html" class="col d-block">
                 <div class="dich_vu">
                     Dịch vụ
                 </div>
@@ -29,7 +29,7 @@
             </div>
         </div>
     </nav>
-    <main class="container ">
+    <main class="container content_cus">
         <div class="welcome">
             <img src="images/image01.jpg" />
             <div class="welcome_content">
@@ -384,7 +384,8 @@
     </div>
 
     <!-- Modal xác nhận -->
-    <div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal fade" data-bs-keyboard="false" data-bs-backdrop="static" id="confirmModal" tabindex="-1"
+        aria-labelledby="confirmModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -393,44 +394,76 @@
                 </div>
                 <form id="confirmForm" class="form-control bookingForm p-3">
                     <div class="modal-body">
-                        <div class="row text-center">
-                            Xác nhận nội dung booking?
+                        <div class="body-content">
+                            <div class="row text-center">
+                                Xác nhận nội dung booking?
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Họ và tên: </div>
+                                <div class="col-9 fullnameText"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Số điện thoại: </div>
+                                <div class="col-9 phoneNumberText"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Ngày cắm trại: </div>
+                                <div class="col-9 campingDateText"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Số người lớn: </div>
+                                <div class="col-3 adultsText"></div>
+                                <div class="col-3">Số trẻ em: </div>
+                                <div class="col-3 childText"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">Ghi chú: </div>
+                                <div class="col-9 noteText"></div>
+                            </div>
                         </div>
-                        <div class="row">
-                            <div class="col-3">Họ và tên: </div>
-                            <div class="col-9 fullnameText"></div>
+                        <div class="successful">
+
                         </div>
-                        <div class="row">
-                            <div class="col-3">Số điện thoại: </div>
-                            <div class="col-9 phoneNumberText"></div>
+                        <div class="false">
+
                         </div>
-                        <div class="row">
-                            <div class="col-3">Ngày cắm trại: </div>
-                            <div class="col-9 campingDateText"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">Số người lớn: </div>
-                            <div class="col-3 adultsText"></div>
-                            <div class="col-3">Số trẻ em: </div>
-                            <div class="col-3 childText"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3">Ghi chú: </div>
-                            <div class="col-9 noteText"></div>
-                        </div>
+
+
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#bookingModal">Quay lại</button>
-                        <button id="xacNhanSubmitBtn" type="button" class="btn btn-primary">Xác nhận</button>
+                        <div>
+                            <button id="cancelConfirmBtn" type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                                data-bs-target="#bookingModal">Quay lại</button>
+                            <button id="xacNhanSubmitBtn" type="submit" class="btn btn-primary">Xác nhận</button>
+                            <button id="loadingBtn" class="btn btn-primary d-none" type="button" disabled>
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                Loading...
+                            </button>
+                        </div>
+
                     </div>
                 </form>
             </div>
         </div>
     </div>
-
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="toast-header">
+            <strong class="me-auto">Camping Trip Thông báo</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div class="toast-body">
+            <div class="alert alert-success" role="alert">   
+                <h4 class="alert-heading">Đăng kí booking thành công!</h4>
+                <p>Chúng tôi sẽ liên hệ bạn sớm với bạn sớm thôi. Thời gian liên hệ có thể ngoài giờ hành chính.</p>
+                <hr>
+                <p class="mb-0">Cảm ơn bạn đã quan tâm sử dụng dịch vụ của chúng tôi!</p>
+              </div>
+          </div>
+        </div>
+      </div>
 
     <script src="dist/main.js"></script>
-    <!-- <script src="dist/form_validate.js"></script> -->
     <script src="dist/calculate.js"></script>
 
 </body>
