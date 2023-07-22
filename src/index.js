@@ -1,4 +1,3 @@
-import $ from "jquery";
 import Swal from "sweetalert2";
 
 import "bootstrap";
@@ -9,6 +8,7 @@ import { initializeApp } from 'firebase/app'
 import {
   getFirestore, collection, getDocs, doc, addDoc
 } from 'firebase/firestore'
+import Aos from "aos";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBbE0MdeaJ3YPTUTD9ziedq84ILqq2v8gg",
@@ -27,9 +27,7 @@ initializeApp(firebaseConfig)
 
 const db = getFirestore()
 
-
 // collection ref
-
 const usersCol = collection(db, 'orders')
 
 getDocs(usersCol)
@@ -78,8 +76,6 @@ function showConfirmInfo(bookingOrder) {
   document.querySelector('.childText').innerHTML = bookingOrder.childAmounts ? bookingOrder.childAmounts : "0"
   document.querySelector('.noteText').innerHTML = bookingOrder.note ? bookingOrder.note : "Không có"
 }
-
-var bookingModalE = document.querySelector('#bookingModal')
 
 var confirmFormE = document.querySelector('#confirmForm')
 confirmFormE.addEventListener('submit', function (e) {
@@ -261,7 +257,6 @@ const stars = document.querySelectorAll(".stars i");
 // ---- ---- Stars ---- ---- //
 stars.forEach((star, index1) => {
   star.addEventListener('click', () => {
-    console.log("")
     stars.forEach((star, index2) => {
       // ---- ---- Active Star ---- ---- //
       index1 >= index2
@@ -297,6 +292,8 @@ viewDVElement.addEventListener('click', function () {
 })
 
 
+// Animation for element
+Aos.init()
 
 
 

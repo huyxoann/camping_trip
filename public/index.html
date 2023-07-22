@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang chủ | Camping Trip Đà Nẵng</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <link rel="stylesheet" href="scss/custom.css">
     <link rel="stylesheet" href="css/style.css">
 
@@ -42,32 +44,32 @@
             </div>
 
         </div>
-        <div class="about_out_service col">
+        <div class="about_out_service col" data-aos="fade-up">
             <div>About Our Service</div>
             <div>Chúng tôi cung cấp dịch vụ Set up cắm trại ở bãi biển lý tưởng nhất. Biển xanh, cảnh đẹp và hơn thế
                 nữa...</div>
         </div>
         <div class="service_list d-flex flex-row">
             <div class="col-3 d-flex justify-content-center">
-                <div class="service_item">
+                <div class="service_item" data-aos="fade-up">
                     <img src="images/image02.jpg" alt="Camping">
                     <p>Cắm trại</p>
                 </div>
             </div>
             <div class="col-3 d-flex justify-content-center">
-                <div class="service_item">
+                <div class="service_item" data-aos="fade-up">
                     <img src="images/IM03.jpg" alt="Camping">
                     <p>Sinh nhật</p>
                 </div>
             </div>
             <div class="col-3 d-flex justify-content-center">
-                <div class="service_item">
+                <div class="service_item" data-aos="fade-up">
                     <img src="images/IM05.JPG" alt="Camping">
                     <p>Team Building</p>
                 </div>
             </div>
             <div class="col-3 d-flex justify-content-center">
-                <div class="service_item">
+                <div class="service_item" data-aos="fade-up">
                     <img src="images/IM04.JPG" alt="Camping">
                     <p>Lửa trại</p>
                 </div>
@@ -88,20 +90,20 @@
             <div class="anh row">
                 <div class="col-6 cot_1 w-50 d-flex flex-column">
                     <div class="row">
-                        <img src="images/IM06.jpg" alt="">
+                        <img src="images/IM06.jpg" alt="" data-aos="fade-right">
                     </div>
                     <div class="row d-flex flex-row mt-4">
-                        <img class="col w-50" src="images/IM09.jpg" alt="">
-                        <img class="col w-50" src="images/IM10.jpg" alt="">
+                        <img class="col w-50" src="images/IM09.jpg" alt="" data-aos="fade-down">
+                        <img class="col w-50" src="images/IM10.jpg" alt="" data-aos="fade-down">
                     </div>
                 </div>
                 <div class="col-6 w-50">
                     <div class="row">
-                        <img class="col w-50" src="images/IM07.jpg" alt="">
-                        <img class="col w-50" src="images/IM08.jpg" alt="">
+                        <img class="col w-50" src="images/IM07.jpg" alt="" data-aos="fade-up">
+                        <img class="col w-50" src="images/IM08.jpg" alt="" data-aos="fade-up">
                     </div>
                     <div class="row mt-4">
-                        <img class="" src="images/IM11.jpg" alt="">
+                        <img class="" src="images/IM11.jpg" alt="" data-aos="fade-left">
                     </div>
                 </div>
             </div>
@@ -109,8 +111,8 @@
         <div class="videos">
             <div class="title_cus">Video</div>
             <div class="subtext_cus">Những khoảnh khắc vàng được lưu giữ lại...</div>
-            <div id="carouselVideo" class="carousel slide">
-                <div class="carousel-inner">
+            <div id="carouselVideo" class="carousel slide" >
+                <div class="carousel-inner" data-aos="flip-left">
                     <div class="carousel-item active">
                         <!-- <img src="./images/IM03.jpg" class="d-block w-100" alt="..."> -->
                         <video src="videos/V01.mp4" controls autoplay muted class="d-block w-100"></video>
@@ -134,7 +136,7 @@
                 </button>
             </div>
         </div>
-        <div class="feedback_posts">
+        <div class="feedback_posts" data-aos="fade-up">
             <div class="title_cus text-center">Nhận xét nổi bật</div>
             <div class="row m-3">
                 <div class="feedback_post d-flex flex-column">
@@ -448,23 +450,24 @@
     </div>
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-          <div class="toast-header">
-            <strong class="me-auto">Camping Trip Thông báo</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-          </div>
-          <div class="toast-body">
-            <div class="alert alert-success" role="alert">   
-                <h4 class="alert-heading">Đăng kí booking thành công!</h4>
-                <p>Chúng tôi sẽ liên hệ bạn sớm với bạn sớm thôi. Thời gian liên hệ có thể ngoài giờ hành chính.</p>
-                <hr>
-                <p class="mb-0">Cảm ơn bạn đã quan tâm sử dụng dịch vụ của chúng tôi!</p>
-              </div>
-          </div>
+            <div class="toast-header">
+                <strong class="me-auto">Camping Trip Thông báo</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Đăng kí booking thành công!</h4>
+                    <p>Chúng tôi sẽ liên hệ bạn sớm với bạn sớm thôi. Thời gian liên hệ có thể ngoài giờ hành chính.</p>
+                    <hr>
+                    <p class="mb-0">Cảm ơn bạn đã quan tâm sử dụng dịch vụ của chúng tôi!</p>
+                </div>
+            </div>
         </div>
-      </div>
+    </div>
 
     <script src="dist/main.js"></script>
     <script src="dist/calculate.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 </body>
 
