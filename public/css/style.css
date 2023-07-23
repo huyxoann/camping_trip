@@ -284,13 +284,15 @@ body {
     word-wrap: break-word;
 }
 
-.about_out_service {
+.about_out_service,
+.bang-gia {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.about_out_service div:first-child {
+.about_out_service div:first-child,
+.bang-gia {
     margin-top: 64px;
     color: #1B4448;
     font-size: 45px;
@@ -661,4 +663,90 @@ textarea {
     font-family: FiraSansMedium;
     font-weight: 500;
     word-wrap: break-word
+}
+
+.gia_item {
+    width: max-content;
+    background-color: #745a5a;
+    padding: 16px;
+    border-radius: 20px;
+    text-align: center;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+.gia_item div {
+    color: white;
+    font-size: 32px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word;
+    padding: 8px;
+}
+
+.gia_item div:last-child {
+    background-color: #E96938;
+    padding: 8px;
+    border-radius: 40px;
+}
+
+.what_service_have {
+    color: #1B4448;
+    font-size: 45px;
+    font-family: OutfitBold;
+    font-weight: 700;
+    word-wrap: break-word;
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.setup_label {
+    color: #1B4448;
+    font-size: 45px;
+    font-family: OutfitBold;
+    font-weight: 700;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    margin-top: 40px;
+    text-align: start;
+    width: max-content;
+    padding: 20px;
+    background-color: #E96938;
+}
+
+.setup_list {
+    background-color: #1B4448;
+    padding: 16px 64px 16px 64px;
+    
+}
+
+
+.setup_list ol {
+    text-align: start;
+    list-style-type: decimal;
+    color: white;
+    font-size: 32px;
+    font-family: FiraSansMedium;
+    word-wrap: break-word;
+    text-transform: capitalize;
+}
+.setup_list ol li{
+    padding-bottom: 6px;
+}
+.setup_list img{
+    width: min-content;
+    right: 0;
+    top: 0;
+}
+.more_info{
+    color: #1B4448;
+    font-size: 32px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word;
+    text-transform: none;
+    margin-top: 16px;
+    text-align: center;
+    line-height: 1.5;
 }
