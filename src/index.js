@@ -1,14 +1,15 @@
 import Swal from "sweetalert2";
 
+import './admin_login'
 import "bootstrap";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 import { initializeApp } from 'firebase/app'
 
-import {
-  getFirestore, collection, getDocs, doc, addDoc
-} from 'firebase/firestore'
+import { getFirestore, collection, getDocs, doc, addDoc } from 'firebase/firestore'
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Aos from "aos";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyBbE0MdeaJ3YPTUTD9ziedq84ILqq2v8gg",
@@ -21,11 +22,13 @@ const firebaseConfig = {
 };
 
 // init firebase app
-initializeApp(firebaseConfig)
+const app = initializeApp(firebaseConfig)
 
 // init services
 
 const db = getFirestore()
+
+// Initialize Firebase Authentication and get a reference to the service
 
 // collection ref
 const usersCol = collection(db, 'orders')
@@ -42,10 +45,48 @@ getDocs(usersCol)
     console.error(err.message)
   })
 
+const loginFormE = document.querySelector('#loginForm')
+var email = document.querySelector('#username')
+var password = document.querySelector('#password')
+
+
+const auth = getAuth();
+loginFormE.addEventListener('submit', function (e) {
+  e.preventDefault()
+  signInWithEmailAndPassword(auth, email.value, password.value)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log(user)
+      // ...
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error(errorMessage)
+    });
+})
+
+auth.onAuthStateChanged(function(user){
+  if (user) {
+    // Người dùng đã đăng nhập
+    console.log("Người dùng đã đăng nhập! User ID:", user.uid);
+    window.location.href = '/public/admin/admin.html';
+  } else {
+    // Người dùng chưa đăng nhập
+    console.log("Người dùng chưa đăng nhập.");
+  }
+})
+
+
+
+
+
+
+
+
+
 // Form submit
-
-
-
 var usersForm = document.querySelector("#bookingForm")
 
 var fullname = document.getElementById('nameInput');
