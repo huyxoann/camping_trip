@@ -3,12 +3,15 @@ import Swal from "sweetalert2";
 import './admin_login'
 import "bootstrap";
 
+import './zaloMessageService'
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 import { initializeApp } from 'firebase/app'
 
 import { getFirestore, collection, getDocs, doc, addDoc } from 'firebase/firestore'
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import Aos from "aos";
+
 
 
 const firebaseConfig = {

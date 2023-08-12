@@ -718,7 +718,7 @@ textarea {
 .setup_list {
     background-color: #1B4448;
     padding: 16px 64px 16px 64px;
-    
+
 }
 
 
@@ -731,15 +731,18 @@ textarea {
     word-wrap: break-word;
     text-transform: capitalize;
 }
-.setup_list ol li{
+
+.setup_list ol li {
     padding-bottom: 6px;
 }
-.setup_list img{
+
+.setup_list img {
     width: min-content;
     right: 0;
     top: 0;
 }
-.more_info{
+
+.more_info {
     color: #1B4448;
     font-size: 32px;
     font-family: FiraSansMedium;
@@ -749,4 +752,67 @@ textarea {
     margin-top: 16px;
     text-align: center;
     line-height: 1.5;
+}
+
+.feedback_submit_button {
+    margin-top: 8px;
+    color: white;
+    font-size: 16px;
+    font-family: FiraSansMedium;
+    font-weight: 500;
+    word-wrap: break-word;
+    padding: 8px;
+}
+
+@media (min-width: 0px) and (max-width: 520px) {
+    .welcome_text p {
+        font-size: 25px;
+    }
+    .welcome_text{
+        top: 30%;
+    }
+
+    .welcome_subhead {
+        display: none;
+    }
+
+    .footer p {
+        font-size: 20px;
+    }
+
+    .about_out_service div p {
+        font-size: 20px;
+    }
+
+    .setup_label p {
+        font-size: 30px;
+    }
+
+    .setup_list ol li {
+        font-size: 25px;
+    }
+
+    .setup_list img {
+        display: none;
+    }
+}
+
+@media (min-width:1023px) {}
+
+@media (max-width: 1024px) {
+    .corp_name {
+        text-overflow: ellipsis;
+
+        /* Needed to make it work */
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .welcome_subhead {
+        display: none;
+    }
+
+    .footer p {
+        font-size: 20px;
+    }
 }
